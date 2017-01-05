@@ -45,6 +45,23 @@ coreo_aws_advisor_alert "no-global-trails" do
   id_map ""
 end
 
+coreo_uni_util_notify "advise-cloudtrail-rollup" do
+  action :${AUDIT_AWS_CLOUDTRAIL_ROLLUP_REPORT}
+  type 'email'
+  allow_empty ${AUDIT_AWS_CLOUDTRAIL_ALLOW_EMPTY}
+  send_on '${AUDIT_AWS_CLOUDTRAIL_SEND_ON}'
+  payload '
+composite name: PLAN::stack_name
+plan name: PLAN::name
+number_violations_ignored: COMPOSITE::coreo_aws_advisor_cloudtrail.advise-cloudtrail.number_ignored_violations
+COMPOSITE::coreo_uni_util_jsrunner.tags-rollup.return
+  '
+  payload_type 'text'
+  endpoint ({
+      :to => '${AUDIT_AWS_CLOUDTRAIL_ALERT_RECIPIENT}', :subject => 'CloudCoreo cloudtrail advisor alerts on PLAN::stack_name :: PLAN::name'
+  })
+end
+
 #coreo_aws_advisor_cloudtrail "advise-cloudtrail" do
 #  action :advise
 #  alerts ${AUDIT_AWS_CLOUDTRAIL_ALERT_LIST}
@@ -243,20 +260,5 @@ coreo_uni_util_notify "advise-cloudtrail-to-tag-values" do
   notifiers 'COMPOSITE::coreo_uni_util_jsrunner.tags-to-notifiers-array.return'
 end
 
-coreo_uni_util_notify "advise-cloudtrail-rollup" do
-  action :${AUDIT_AWS_CLOUDTRAIL_ROLLUP_REPORT}
-  type 'email'
-  allow_empty ${AUDIT_AWS_CLOUDTRAIL_ALLOW_EMPTY}
-  send_on '${AUDIT_AWS_CLOUDTRAIL_SEND_ON}'
-  payload '
-composite name: PLAN::stack_name
-plan name: PLAN::name
-number_violations_ignored: COMPOSITE::coreo_aws_advisor_cloudtrail.advise-cloudtrail.number_ignored_violations
-COMPOSITE::coreo_uni_util_jsrunner.tags-rollup.return
-  '
-  payload_type 'text'
-  endpoint ({
-      :to => '${AUDIT_AWS_CLOUDTRAIL_ALERT_RECIPIENT}', :subject => 'CloudCoreo cloudtrail advisor alerts on PLAN::stack_name :: PLAN::name'
-  })
-end
+
 
