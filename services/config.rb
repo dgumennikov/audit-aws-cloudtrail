@@ -30,7 +30,7 @@ coreo_aws_advisor_alert "cloudtrail-trail-with-global" do
   operators ["=="]
   alert_when [true]
   id_map "object.trail_list.name"
-end
+
 
 coreo_aws_advisor_alert "no-global-trails" do
   action :define
