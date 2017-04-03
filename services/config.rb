@@ -136,7 +136,7 @@ coreo_uni_util_notify "advise-cloudtrail-json" do
   action :nothing
   type 'email'
   allow_empty ${AUDIT_AWS_CLOUDTRAIL_ALLOW_EMPTY}
-  send_on '${AUDIT_AWS_CLOUDTRAIL_SEND_ON}'
+  send_on '${AUDIT_AWS_CLOUDTRAIL}'
   payload 'COMPOSITE::coreo_uni_util_jsrunner.cloudtrail-aggregate.return'
   payload_type "json"
   endpoint ({
