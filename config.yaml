@@ -34,7 +34,12 @@ variables:
         description: "Would you like to send a Summary report? Options - notify / nothing. Default is no / nothing."
         required: true
         type: string
-        default: 
+        default:
+    AUDIT_AWS_CLOUDTRAIL_HTML_REPORT:
+        description: notify or nothing
+        required: true
+        type: string
+        default:
     AUDIT_AWS_CLOUDTRAIL_OWNER_TAG:
         description: "Enter an AWS tag whose value is an email address of owner of the ELB object. (Optional)"
         required: false
