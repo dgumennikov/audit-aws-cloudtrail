@@ -20,15 +20,6 @@ variables:
         required: true
         type: string
         default:
-    AUDIT_AWS_CLOUDTRAIL_REGIONS:
-        description: "List of AWS regions to check. Default is us-east-1,us-west-1,us-west-2."
-        required: true
-        type: array
-        default:
-            - us-east-1
-            - us-east-2
-            - us-west-1
-            - us-west-2
     AUDIT_AWS_CLOUDTRAIL_HTML_REPORT:
         description: notify or nothing
         required: true
