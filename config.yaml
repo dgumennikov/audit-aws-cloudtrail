@@ -20,7 +20,7 @@ variables:
         description: "Enter the email address(es) that will receive notifications. If more than one, separate each with a comma."
         required: true
         type: string
-        default:
+        default: test1
     AUDIT_AWS_CLOUDTRAIL_REGIONS:
         description: "List of AWS regions to check. Default is us-east-1,us-west-1,us-west-2."
         required: true
@@ -34,12 +34,12 @@ variables:
         description: "Would you like to send a Summary report? Options - notify / nothing. Default is no / nothing."
         required: true
         type: string
-        default:
+        default: test1
     AUDIT_AWS_CLOUDTRAIL_HTML_REPORT:
         description: notify or nothing
         required: true
         type: string
-        default:
+        default: test
     AUDIT_AWS_CLOUDTRAIL_OWNER_TAG:
         description: "Enter an AWS tag whose value is an email address of owner of the ELB object. (Optional)"
         required: false
