@@ -29,11 +29,6 @@ variables:
             - us-east-2
             - us-west-1
             - us-west-2
-    AUDIT_AWS_CLOUDTRAIL_ROLLUP_REPORT:
-        description: "Would you like to send a Summary report? Options - notify / nothing. Default is no / nothing."
-        required: true
-        type: string
-        default:
     AUDIT_AWS_CLOUDTRAIL_HTML_REPORT:
         description: notify or nothing
         required: true
